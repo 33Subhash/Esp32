@@ -42,20 +42,22 @@
 //#define USE_TTGO_T_OI
 
 #include "BlynkEdgent.h"
+
 BLYNK_WRITE(V0){
-  int pinValue=param.asInt();
-  digitalWrite(2, pinValue );
+  int pinValue=param.asInt(); //Reading data from blynk cloud 
+  digitalWrite(2, pinValue ); // Writing digital data to GPIO 
 }
+
 void setup()
 {
   pinMode(2, OUTPUT);
   Serial.begin(115200);
   delay(100);
 
-  BlynkEdgent.begin();
+  BlynkEdgent.begin(); //Initializes the Blynk Edgent framework
 }
 
 void loop() {
-  BlynkEdgent.run();
+  BlynkEdgent.run(); //Keeps Blynk connection alive and handles all Blynk background tasks 
 }
 
